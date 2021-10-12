@@ -4,4 +4,27 @@ body {
 .hexagon {
   width: 100px;
   height: 100px;
+  position: relative;
+}
+
+main {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  grid-auto-flow: column;
+}
+
+.hexagon-col-1{
+  grid-column: 1;
+  position: relative;
+  top: 50px;
+  left: 12px;
+}
+.hexagon-col-2{
+  grid-column: 2;
+}
+.hexagon-col-3{
+  grid-column: 3;
+  position: relative;
+  top: 50px;
+  right: 12px;
 }
