@@ -6,11 +6,22 @@ body{
   height: 100px;
   /* animation: fadeOut 1s both; */
 }
-@keyframes fadeOut {
+@keyframes fadeOutBlack {
   0% {opacity:1;}
   100% {opacity: 0;}
 }
-
+@keyframes fadeOutRed {
+  0% {fill: initial;}
+  100% {fill: red;}
+}
+@keyframes fadeOutGreen {
+  0% {fill: initial;}
+  100% {fill: green;}
+}
+@keyframes fadeOutBlue {
+  0% {fill: initial;}
+  100% {fill: blue;}
+}
 main{
   display: grid;
   grid-template-columns: repeat(6, 100px);
@@ -97,7 +108,7 @@ main{
   justify-content: center;
   grid-gap: 12px; */
   display: grid;
-  grid-template-columns: repeat(3, 100px);
+  grid-template-columns: repeat(4, 100px);
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -120,6 +131,13 @@ main{
   height: 85px;
   width: 85px;
   background-color: blue;
+  border-radius: 50%;
+  justify-self: center;
+}
+.color-picker-black{
+  height: 85px;
+  width: 85px;
+  background-color: black;
   border-radius: 50%;
   justify-self: center;
 }
