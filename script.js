@@ -4,6 +4,6 @@ document.querySelectorAll('.hexagon').forEach(item => {
     item.addEventListener('click', event => {
         console.log(event.target);
         qwerty = event.target;
-        qwerty.style.visibility = "hidden";
+        qwerty.style.animation = "fadeOut 1s both";
     });
 });
