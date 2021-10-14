@@ -12,15 +12,15 @@ body{
 }
 @keyframes fadeOutRed {
   0% {fill: initial;}
-  100% {fill: red;}
+  100% {fill: #ff0000;}
 }
 @keyframes fadeOutGreen {
   0% {fill: initial;}
-  100% {fill: green;}
+  100% {fill: #008000;}
 }
 @keyframes fadeOutBlue {
   0% {fill: initial;}
-  100% {fill: blue;}
+  100% {fill: #0000ff;}
 }
 main{
   display: grid;
@@ -108,7 +108,7 @@ main{
   justify-content: center;
   grid-gap: 12px; */
   display: grid;
-  grid-template-columns: repeat(4, 100px);
+  grid-template-columns: repeat(5, 100px);
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -116,21 +116,21 @@ main{
 .color-picker-red{
   height: 85px;
   width: 85px;
-  background-color: red;
+  background-color: #ff0000;
   border-radius: 50%;
   justify-self: center;
 }
 .color-picker-green{
   height: 85px;
   width: 85px;
-  background-color: green;
+  background-color: #008000;
   border-radius: 50%;
   justify-self: center;
 }
 .color-picker-blue{
   height: 85px;
   width: 85px;
-  background-color: blue;
+  background-color: #0000ff;
   border-radius: 50%;
   justify-self: center;
 }
@@ -140,6 +140,16 @@ main{
   background-color: black;
   border-radius: 50%;
   justify-self: center;
+}
+.color-picker-mixer{
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  justify-self: center;
+}
+.color-picker-mixer svg {
+  height: 75px;
+  width: 75px;
 }
 .checked{
   border: solid gold 5px;

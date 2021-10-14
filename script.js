@@ -1,9 +1,12 @@
 var selected_color;
+var mix_num = 0;
+var selected = [];
 
 const red_button = document.querySelectorAll('.color-picker-red')[0];
 const green_button = document.querySelectorAll('.color-picker-green')[0];
 const blue_button = document.querySelectorAll('.color-picker-blue')[0];
 const black_button = document.querySelectorAll('.color-picker-black')[0];
+const mixer_button = document.querySelectorAll('.color-picker-mixer')[0];
 
 document.querySelectorAll('.hexagon').forEach(item => {
 	item.addEventListener('click', event => {
@@ -20,6 +23,21 @@ document.querySelectorAll('.hexagon').forEach(item => {
 		}
 		if (selected_color == 'blue') {
 			item.querySelector('path').style.animation = "fadeOutBlue 1s both";
+		}
+		if (selected_color == 'mix') {
+			if (mix_num < 2) {
+				item.querySelector('path').style.stroke = "#dc143c";
+				item.querySelector('path').style.strokeWidth = "5px";
+				selected.push(item);
+				mix_num ++;
+			} else {
+				selected.forEach(item => {
+					item.querySelector('path').style.stroke = "";
+					item.querySelector('path').style.strokeWidth = "";
+					selected = []
+					mix_num = 0;
+				});
+			}
 		}
 	});
 });
@@ -52,6 +70,12 @@ black_button.addEventListener('click', event => {
 	selected_color = 'black';
 });
 
+mixer_button.addEventListener('click', event => {
+	uncheck_colors();
+	mixer_button.classList.add('checked');
+	selected_color = 'mix';
+});
+
 function uncheck_colors() {
 	if (red_button.classList.contains('checked')) {
 		red_button.classList.remove('checked');
@@ -64,5 +88,8 @@ function uncheck_colors() {
 	}
 	if (black_button.classList.contains('checked')) {
 		black_button.classList.remove('checked');
+	}
+	if (mixer_button.classList.contains('checked')) {
+		mixer_button.classList.remove('checked');
 	}
 }
