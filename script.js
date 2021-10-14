@@ -1,6 +1,10 @@
 var selected_color;
 var mix_num = 0;
 var selected = [];
+var to_mix = [];
+var color_1;
+var color_2;
+var i = 0;
 
 const red_button = document.querySelectorAll('.color-picker-red')[0];
 const green_button = document.querySelectorAll('.color-picker-green')[0];
@@ -25,18 +29,40 @@ document.querySelectorAll('.hexagon').forEach(item => {
 			item.querySelector('path').style.animation = "fadeOutBlue 1s both";
 		}
 		if (selected_color == 'mix') {
-			if (mix_num < 2) {
+			if (mix_num < 1) {
 				item.querySelector('path').style.stroke = "#dc143c";
 				item.querySelector('path').style.strokeWidth = "5px";
 				selected.push(item);
 				mix_num ++;
 			} else {
+				if (mix_num == 1){
+					selected.push(item);
+					mix_num = 0;
+				}
 				selected.forEach(item => {
 					item.querySelector('path').style.stroke = "";
 					item.querySelector('path').style.strokeWidth = "";
-					selected = []
-					mix_num = 0;
+
+					to_mix.push(window.getComputedStyle(item.querySelector('path')).getPropertyValue('fill'));
+
+					to_mix.forEach(rgb => {
+						if (i == 0){
+							color_1 = rgb;
+							i++;
+						} else {
+							color_2 = rgb;
+							i++;
+						}
+					});
 				});
+			selected = [];
+			mix_num = 0;
+			to_mix = [];
+			i = 0;
+
+			if (color_1 != undefined && color_2 != undefined){
+				console.log(color_1, color_2)
+			}
 			}
 		}
 	});
