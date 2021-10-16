@@ -164,19 +164,9 @@ mixer_button.addEventListener('click', event => {
 });
 
 function uncheck_colors() {
-	if (red_button.classList.contains('checked')) {
-		red_button.classList.remove('checked');
-	}
-	if (green_button.classList.contains('checked')) {
-		green_button.classList.remove('checked');
-	}
-	if (blue_button.classList.contains('checked')) {
-		blue_button.classList.remove('checked');
-	}
-	if (black_button.classList.contains('checked')) {
-		black_button.classList.remove('checked');
-	}
-	if (mixer_button.classList.contains('checked')) {
-		mixer_button.classList.remove('checked');
-	}
+	document.querySelectorAll('.color-picker button').forEach(item =>{
+		if (item.classList.contains('checked')){
+			item.classList.remove('checked');
+		}
+	});
 }

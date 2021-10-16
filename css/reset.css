@@ -4,3 +4,8 @@ body{
 html {
   touch-action: manipulation;
 }
+button{
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
