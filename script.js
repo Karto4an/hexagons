@@ -5,6 +5,7 @@ var to_mix = [];
 var color_1;
 var color_2;
 var i = 0;
+var new_color;
 
 var animations_js = document.createElement('style')
 animations_js.type = 'text/css';
@@ -14,24 +15,17 @@ const green_button = document.querySelectorAll('.color-picker-green')[0];
 const blue_button = document.querySelectorAll('.color-picker-blue')[0];
 const black_button = document.querySelectorAll('.color-picker-black')[0];
 const mixer_button = document.querySelectorAll('.color-picker-mixer')[0];
+const add_button = document.querySelectorAll('.color-picker-confirm')[0];
 
 document.querySelectorAll('.hexagon').forEach(item => {
 	item.addEventListener('click', event => {
 		console.log(event.target);
 
+		if (selected_color == 'add') {
+			item.querySelector('path').style.fill = new_color;
+		}
 		if (selected_color == 'black') {
 			item.querySelector('path').style.fill = "black";
-			
-			// const prev_color = window.getComputedStyle(item.querySelector('path')).getPropertyValue('fill');
-			// var rgb = 'rgb(255, 255, 255)';
-			// rgb_arr = rgb.replace(/[^0-9\,]+/g, "").split(",");
-			// c_r = rgb_arr[0];
-			// c_g = rgb_arr[1];
-			// c_b = rgb_arr[2];
-
-			// add_color_animation(prev_color, rgbToHex(c_r, c_g, c_b));
-			// item.style.animation = `${rgbToHex(c_r, c_g, c_b)} 1s both`;
-			
 		}
 		if (selected_color == 'red') {
 			item.querySelector('path').style.fill = "red";
@@ -94,22 +88,18 @@ document.querySelectorAll('.hexagon').forEach(item => {
 				var n_c_b = Math.ceil(c_1_b - (c_1_b - c_2_b)/2);
 				console.log(n_c_r, n_c_g, n_c_b);
 
-				document.querySelectorAll('.color-picker-confirm svg')[0].style.backgroundColor = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
+				new_color = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
+				document.querySelectorAll('.color-picker-confirm svg')[0].style.backgroundColor = new_color;
 			}
 		}
 	});
 });
 
-function add_color_animation(prev_color, color) {
-	var frames = `
-	@keyframes fadeOut${color} {
-		0% {fill: ${prev_color};}
-		100% {fill: ${color};}
-	}
-	`;
-	animations_js.innerHTML = frames;
-	document.getElementsByTagName('head')[0].appendChild(animations_js);
-}
+add_button.addEventListener('click', event => {
+	uncheck_colors();
+	add_button.classList.add('checked');
+	selected_color = 'add';
+});
 
 red_button.addEventListener('click', event => {
 	uncheck_colors();
