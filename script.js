@@ -6,6 +6,9 @@ var color_1;
 var color_2;
 var i = 0;
 
+var animations_js = document.createElement('style')
+animations_js.type = 'text/css';
+
 const red_button = document.querySelectorAll('.color-picker-red')[0];
 const green_button = document.querySelectorAll('.color-picker-green')[0];
 const blue_button = document.querySelectorAll('.color-picker-blue')[0];
@@ -17,16 +20,27 @@ document.querySelectorAll('.hexagon').forEach(item => {
 		console.log(event.target);
 
 		if (selected_color == 'black') {
-			item.style.animation = "fadeOutBlack 1s both";
+			item.querySelector('path').style.fill = "black";
+			
+			// const prev_color = window.getComputedStyle(item.querySelector('path')).getPropertyValue('fill');
+			// var rgb = 'rgb(255, 255, 255)';
+			// rgb_arr = rgb.replace(/[^0-9\,]+/g, "").split(",");
+			// c_r = rgb_arr[0];
+			// c_g = rgb_arr[1];
+			// c_b = rgb_arr[2];
+
+			// add_color_animation(prev_color, rgbToHex(c_r, c_g, c_b));
+			// item.style.animation = `${rgbToHex(c_r, c_g, c_b)} 1s both`;
+			
 		}
 		if (selected_color == 'red') {
-			item.querySelector('path').style.animation = "fadeOutRed 1s both";
+			item.querySelector('path').style.fill = "red";
 		}
 		if (selected_color == 'green') {
-			item.querySelector('path').style.animation = "fadeOutGreen 1s both";
+			item.querySelector('path').style.fill = "green";
 		}
 		if (selected_color == 'blue') {
-			item.querySelector('path').style.animation = "fadeOutBlue 1s both";
+			item.querySelector('path').style.fill = "blue";
 		}
 		if (selected_color == 'mix') {
 			if (mix_num < 1) {
@@ -66,7 +80,6 @@ document.querySelectorAll('.hexagon').forEach(item => {
 
 				var color_1_arr = color_1.split(",");
 				var color_2_arr = color_2.split(",");
-				//console.log(typeof(color_1_arr));
 
 				var c_1_r = color_1_arr[0];
 				var c_1_g = color_1_arr[1];
@@ -87,49 +100,16 @@ document.querySelectorAll('.hexagon').forEach(item => {
 	});
 });
 
-function split_rgb(color_1, color_2) {
-	var color_1_r;
-	var color_1_g;
-	var color_1_b;
-
-	if (color_1 != undefined && color_2 != undefined){
-	color_1 = color_1.replace(/[^0-9\,]+/g, "");
-	color_2 = color_2.replace(/[^0-9\,]+/g, "");
-
-	var color_1_arr = color_1.split(",");
-	var color_2_arr = color_2.split(",");
-	console.log(color_2_arr, color_1_arr);
-
-	var i = 0;
-	color_1_arr.forEach(element => {
-		if (i == 0) {
-			color_1_r = element;
-		}
-		if (i == 1) {
-			color_1_g = element;
-		}
-		if (i == 2) {
-			color_1_b = element;
-		}
-	});
-	color_2_arr.forEach(element => {
-		// if (i == 0) {
-		// 	console.log(element);
-		// }
-		// if (i == 1) {
-		// 	console.log(element);
-		// }
-		// if (i == 2) {
-		// 	console.log(element);
-		// }
-	});
+function add_color_animation(prev_color, color) {
+	var frames = `
+	@keyframes fadeOut${color} {
+		0% {fill: ${prev_color};}
+		100% {fill: ${color};}
+	}
+	`;
+	animations_js.innerHTML = frames;
+	document.getElementsByTagName('head')[0].appendChild(animations_js);
 }
-i = 0;
-console.log(color_1_r, color_1_g, color_1_b);
-return color_1_r, color_1_g, color_1_b;
-}
-
-// border: solid gold 5px;
 
 red_button.addEventListener('click', event => {
 	uncheck_colors();
@@ -143,7 +123,6 @@ green_button.addEventListener('click', event => {
 	green_button.classList.add('checked');
 	selected_color = 'green';
 });
-
 
 blue_button.addEventListener('click', event => {
 	uncheck_colors();
@@ -169,4 +148,12 @@ function uncheck_colors() {
 			item.classList.remove('checked');
 		}
 	});
+}
+function componentToHex(c) {
+	var hex = c.toString(16);
+	return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+	return "#" + r.toString(16) + g.toString(16) + b.toString(16);
 }

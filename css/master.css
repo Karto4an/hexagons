@@ -6,22 +6,10 @@ body{
   height: 100px;
   /* animation: fadeOut 1s both; */
 }
-@keyframes fadeOutBlack {
-  0% {opacity:1;}
-  100% {opacity: 0;}
+.hexagon path{
+  transition: fill 0.5s ease-out;
 }
-@keyframes fadeOutRed {
-  0% {fill: initial;}
-  100% {fill: #ff0000;}
-}
-@keyframes fadeOutGreen {
-  0% {fill: initial;}
-  100% {fill: #008000;}
-}
-@keyframes fadeOutBlue {
-  0% {fill: initial;}
-  100% {fill: #0000ff;}
-}
+
 main{
   display: grid;
   grid-template-columns: repeat(6, 100px);
