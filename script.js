@@ -19,7 +19,7 @@ const add_button = document.querySelectorAll('.color-picker-confirm')[0];
 const menu_open_button = document.querySelectorAll('.color-picker-settings')[0];
 const menu_close_button = document.querySelectorAll('.settings-close')[0];
 const menu = document.querySelectorAll('.menu-holder')[0];
-const green_checkbox = document.querySelectorAll('#green255');
+const green_checkbox = document.querySelectorAll('#green255')[0];
 
 var green = 'rgb(0, 128, 0)';
 
@@ -146,7 +146,8 @@ menu_close_button.addEventListener('click', event => {
 });
 
 green_checkbox.onclick = function(event) {
-	console.log('123')
+	green = 'rgb(0, 255, 0)';
+	green_button.style.backgroundColor = green;
 };
 
 function uncheck_colors() {
