@@ -16,6 +16,12 @@ const blue_button = document.querySelectorAll('.color-picker-blue')[0];
 const black_button = document.querySelectorAll('.color-picker-black')[0];
 const mixer_button = document.querySelectorAll('.color-picker-mixer')[0];
 const add_button = document.querySelectorAll('.color-picker-confirm')[0];
+const menu_open_button = document.querySelectorAll('.color-picker-settings')[0];
+const menu_close_button = document.querySelectorAll('.settings-close')[0];
+const menu = document.querySelectorAll('.menu-holder')[0];
+const green_checkbox = document.querySelectorAll('#green255');
+
+var green = 'rgb(0, 128, 0)';
 
 document.querySelectorAll('.hexagon').forEach(item => {
 	item.addEventListener('click', event => {
@@ -31,7 +37,7 @@ document.querySelectorAll('.hexagon').forEach(item => {
 			item.querySelector('path').style.fill = "red";
 		}
 		if (selected_color == 'green') {
-			item.querySelector('path').style.fill = "green";
+			item.querySelector('path').style.fill = green;
 		}
 		if (selected_color == 'blue') {
 			item.querySelector('path').style.fill = "blue";
@@ -131,6 +137,17 @@ mixer_button.addEventListener('click', event => {
 	mixer_button.classList.add('checked');
 	selected_color = 'mix';
 });
+
+menu_open_button.addEventListener('click', event => {
+	menu.classList.add('show');
+});
+menu_close_button.addEventListener('click', event => {
+	menu.classList.remove('show');
+});
+
+green_checkbox.onclick = function(event) {
+	console.log('123')
+};
 
 function uncheck_colors() {
 	document.querySelectorAll('.color-picker button').forEach(item =>{

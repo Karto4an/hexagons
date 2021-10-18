@@ -16,33 +16,6 @@ main{
   grid-auto-flow: column;
 }
 
-.hexagon-col-1{
-
-  
-
-}
-.hexagon-col-2{
-
-
-}
-.hexagon-col-3{
-
-  
-
-}
-.hexagon-col-4{
-
-
-}
-.hexagon-col-5{
-
-
-}
-.hexagon-col-6{
-
-  
-}
-
 .col-1{
   grid-column: 1;
   display: grid;
@@ -96,10 +69,24 @@ main{
   justify-content: center;
   grid-gap: 12px; */
   display: grid;
-  grid-template-columns: repeat(6, 100px);
+  grid-template-columns: 1fr repeat(6, 100px) 1fr;
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+.color-picker-confirm{
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  justify-self: center;
+  grid-column: 2;
+}
+.color-picker-mixer{
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  justify-self: center;
+  grid-column: 3;
 }
 .color-picker-red{
   height: 85px;
@@ -107,6 +94,7 @@ main{
   background-color: #ff0000;
   border-radius: 50%;
   justify-self: center;
+  grid-column: 4;
 }
 .color-picker-green{
   height: 85px;
@@ -114,6 +102,7 @@ main{
   background-color: #008000;
   border-radius: 50%;
   justify-self: center;
+  grid-column: 5;
 }
 .color-picker-blue{
   height: 85px;
@@ -121,6 +110,7 @@ main{
   background-color: #0000ff;
   border-radius: 50%;
   justify-self: center;
+  grid-column: 6;
 }
 .color-picker-black{
   height: 85px;
@@ -128,19 +118,17 @@ main{
   background-color: black;
   border-radius: 50%;
   justify-self: center;
+  grid-column: 7;
 }
-.color-picker-mixer{
-  height: 85px;
-  width: 85px;
-  border-radius: 50%;
-  justify-self: center;
+.color-picker-settings{
+  width: 32px;
+  height: 32px;
+  align-self: end;
+  justify-self: self-end;
+  grid-column: 8;
+  margin-right: 16px;
 }
-.color-picker-confirm{
-  height: 85px;
-  width: 85px;
-  border-radius: 50%;
-  justify-self: center;
-}
+
 .color-picker-confirm svg{
     border-radius: 50%;
 }
@@ -150,4 +138,43 @@ main{
 }
 .checked{
   border: solid gold 5px;
+}
+
+
+.menu-holder{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  /* top: calc(40vh - 210px / 2);
+  left: calc(50vw - 360px / 2); */
+  display: none;
+  top: 0;
+  left: 0;
+}
+.settings{
+  background-color: cyan;
+  position: relative;
+  width: 320px;
+  height: 180px;
+  top: calc(50vh - 180px / 2);
+  left: calc(50vw - 320px / 2);
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: repeat(3, min-content);
+}
+.settings-close{
+  grid-column: 3;
+  display: flex;
+  height: min-content;
+  justify-self: center;
+  margin-top: 4px;
+  grid-row: 1;
+}
+.settings-property{
+  grid-column: 2;
+  font-size: 18px;
+  align-self: flex-end;
+}
+.show{
+  display: block;
 }
