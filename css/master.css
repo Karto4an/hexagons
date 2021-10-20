@@ -61,7 +61,7 @@ main{
   height: 120px;
   width: 60vw;
   background-color: tan;
-  position: absolute;
+  position: fixed;
   left: 20%;
   bottom: 0;
   display: flex;
@@ -73,6 +73,12 @@ main{
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+@media only screen and (max-width: 1160px) {
+  .color-picker{
+    width: 100vw;
+    left: 0;
+  }
 }
 .color-picker-confirm{
   height: 85px;
@@ -164,11 +170,18 @@ main{
 }
 .settings-close{
   grid-column: 3;
+  position: absolute;
   display: flex;
-  height: min-content;
+  height: 32px;
+  width: 32px;
   justify-self: center;
   margin-top: 4px;
   grid-row: 1;
+  background-color: red;
+}
+.settings-close svg{
+  height: 32px;
+  width: 32px;
 }
 .settings-property{
   grid-column: 2;

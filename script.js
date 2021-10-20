@@ -146,8 +146,13 @@ menu_close_button.addEventListener('click', event => {
 });
 
 green_checkbox.onclick = function(event) {
-	green = 'rgb(0, 255, 0)';
-	green_button.style.backgroundColor = green;
+	if (green_checkbox.checked == true) {
+		green = 'rgb(0, 255, 0)';
+		green_button.style.backgroundColor = green;
+	} else {
+		green = 'rgb(0, 128, 0)';
+		green_button.style.backgroundColor = green;
+	}
 };
 
 function uncheck_colors() {
