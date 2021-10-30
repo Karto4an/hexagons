@@ -69,7 +69,7 @@ main{
   justify-content: center;
   grid-gap: 12px; */
   display: grid;
-  grid-template-columns: 1fr repeat(6, 100px) 1fr;
+  grid-template-columns: 1fr repeat(7, 100px) 1fr;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -118,20 +118,28 @@ main{
   justify-self: center;
   grid-column: 6;
 }
+.color-picker-yellow{
+  height: 85px;
+  width: 85px;
+  background-color: rgb(255, 255, 0);
+  border-radius: 50%;
+  justify-self: center;
+  grid-column: 7;
+}
 .color-picker-black{
   height: 85px;
   width: 85px;
   background-color: black;
   border-radius: 50%;
   justify-self: center;
-  grid-column: 7;
+  grid-column: 8;
 }
 .color-picker-settings{
   width: 32px;
   height: 32px;
   align-self: end;
   justify-self: self-end;
-  grid-column: 8;
+  grid-column: 9;
   margin-right: 16px;
 }
 
@@ -144,6 +152,9 @@ main{
 }
 .checked{
   border: solid gold 5px;
+}
+.checked-yellow{
+  border: solid #645400 5px;
 }
 
 
