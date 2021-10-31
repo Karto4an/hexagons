@@ -56,6 +56,13 @@ main{
   right: 60px;
 }
 
+.color-goal{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  right: 50px;
+  top: 25px;
+}
 
 .color-picker{
   height: 120px;
