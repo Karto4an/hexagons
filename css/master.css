@@ -76,14 +76,12 @@ main{
   left: 20%;
   bottom: 0;
   display: flex;
-  /* align-items: center;
-  justify-content: center;
-  grid-gap: 12px; */
   display: grid;
   grid-template-columns: 1fr repeat(7, 100px) 1fr;
   align-items: center;
   align-content: center;
   justify-content: center;
+  border-radius: 36px;
 }
 @media only screen and (max-width: 1160px) {
   .color-picker{
