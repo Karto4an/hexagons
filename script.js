@@ -159,7 +159,7 @@ document.querySelectorAll('.hexagon').forEach(item => {
 				new_color = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
 				document.querySelectorAll('.color-picker-confirm svg')[0].style.backgroundColor = new_color;
 				if (new_color == goal) {
-					console.log('GG!');
+					congrats.classList.add('show');
 				}
 			}
 		}
