@@ -85,8 +85,8 @@ main{
 }
 @media only screen and (max-width: 1160px) {
   .color-picker{
-    width: 100vw;
-    left: 0;
+    width: 90vw;
+    left: 5vw;
   }
 }
 .color-picker-confirm{
