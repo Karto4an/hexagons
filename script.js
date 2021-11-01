@@ -15,11 +15,12 @@ const add_button = document.querySelectorAll('.color-picker-confirm')[0];
 const menu_open_button = document.querySelectorAll('.color-picker-settings')[0];
 const menu_close_button = document.querySelectorAll('.settings-close')[0];
 const color_goal = document.querySelectorAll('.color-goal')[0];
-const menu = document.querySelectorAll('.menu-holder')[0];
+const menu = document.querySelectorAll('#settings')[0];
+const congrats = document.querySelectorAll('#congrats')[0];
 const green_checkbox = document.querySelectorAll('#green255')[0];
 
 var green = '0, 128, 0';
-var rand_colors = ['255, 0, 0',green,'0, 0, 255','255, 255, 0','0, 0, 0'];
+var rand_colors = ['255, 0, 0',green,'0, 0, 255','255, 255, 0'];
 var gen_color = '';
 var rand_tries = 2;
 
@@ -36,9 +37,6 @@ while (color_2 === undefined) {
 }
 rand_colors = rand_colors.filter(item => item !== color_2);
 
-console.log(rand_colors);
-console.log(color_1,color_2);
-
 var color_1_arr = color_1.split(",");
 var color_2_arr = color_2.split(",");
 
@@ -53,9 +51,33 @@ var c_2_b = color_2_arr[2];
 var n_c_r = Math.ceil(c_1_r - (c_1_r - c_2_r)/2);
 var n_c_g = Math.ceil(c_1_g - (c_1_g - c_2_g)/2);
 var n_c_b = Math.ceil(c_1_b - (c_1_b - c_2_b)/2);
-console.log(n_c_r, n_c_g, n_c_b);
-console.log(rand_colors);
+
+var rand_color_try_1 = `${n_c_r}, ${n_c_g}, ${n_c_b}`;
+
+var r3 = rand_colors.length-1;
+var color_3 = rand_colors[getRandomInt(0, r3)];
+while (color_3 === undefined) {
+	color_3 = rand_colors[getRandomInt(0, r3)];
+}
+
+var color_1_arr = rand_color_try_1.split(",");
+var color_2_arr = color_3.split(",");
+
+var c_1_r = color_1_arr[0];
+var c_1_g = color_1_arr[1];
+var c_1_b = color_1_arr[2];
+
+var c_2_r = color_2_arr[0];
+var c_2_g = color_2_arr[1];
+var c_2_b = color_2_arr[2];
+
+var n_c_r = Math.ceil(c_1_r - (c_1_r - c_2_r)/2);
+var n_c_g = Math.ceil(c_1_g - (c_1_g - c_2_g)/2);
+var n_c_b = Math.ceil(c_1_b - (c_1_b - c_2_b)/2);
+
 color_goal.style.backgroundColor = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
+console.log(`rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`);
+var goal = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
 
 var animations_js = document.createElement('style')
 animations_js.type = 'text/css';
@@ -136,6 +158,9 @@ document.querySelectorAll('.hexagon').forEach(item => {
 
 				new_color = `rgb(${n_c_r}, ${n_c_g}, ${n_c_b})`;
 				document.querySelectorAll('.color-picker-confirm svg')[0].style.backgroundColor = new_color;
+				if (new_color == goal) {
+					console.log('GG!');
+				}
 			}
 		}
 	});
