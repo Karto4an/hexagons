@@ -26,9 +26,18 @@ var rand_tries = 2;
 var r1 = rand_colors.length-1;
 var r2 = rand_colors.length-1;
 var color_1 = rand_colors[getRandomInt(0, r1)];
-rand_colors.pop(r1);
+while (color_1 === undefined) {
+	color_1 = rand_colors[getRandomInt(0, r1)];
+}
+rand_colors = rand_colors.filter(item => item !== color_1);
 var color_2 = rand_colors[getRandomInt(0, r2)];
-rand_colors.pop(r2);
+while (color_2 === undefined) {
+	color_2 = rand_colors[getRandomInt(0, r2)];
+}
+rand_colors = rand_colors.filter(item => item !== color_2);
+
+console.log(rand_colors);
+console.log(color_1,color_2);
 
 var color_1_arr = color_1.split(",");
 var color_2_arr = color_2.split(",");
