@@ -66,6 +66,7 @@ main{
   display: grid;
   align-items: center;
   justify-items: center;
+  font-size: 36px;
 }
 
 .color-picker{
